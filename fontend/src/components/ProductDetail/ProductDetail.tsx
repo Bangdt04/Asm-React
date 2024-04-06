@@ -16,8 +16,8 @@ interface Product {
 }
 
 const ProductDetail = () => {
-  const addToCartHandler = () => {
-    window.location.href = '/cart';
+  const addToCartHandler = (product: Product) => {
+    window.location.href = `/cart?name=${product.name}&price=${product.price}&image=${product.image}`;
   }
 
   const { id } = useParams<{ id: string }>();
@@ -52,16 +52,16 @@ const ProductDetail = () => {
       <div className="detail-product">
         <div className="box-left">
           <div className="detail-image">
-          <img src={product.image} alt={product.name} />
+            <img src={product.image} alt={product.name} />
           </div>
           <div className="detail-image">
-          <img src={product.image} alt={product.name} />
+            <img src={product.image} alt={product.name} />
           </div>
           <div className="detail-image">
-          <img src={product.image} alt={product.name} />
+            <img src={product.image} alt={product.name} />
           </div>
           <div className="detail-image">
-          <img src={product.image} alt={product.name} />
+            <img src={product.image} alt={product.name} />
           </div>
         </div>
         <div className="box-center">
@@ -84,9 +84,7 @@ const ProductDetail = () => {
               <div className="plus"><i className="fa-solid fa-plus" /></div>
             </div>
             <div className="add">
-              <Link to="/cart">
-                <p onClick={addToCartHandler}>Thêm vào giỏ hàng</p>
-              </Link>
+              <p onClick={() => addToCartHandler(product)}>Add To Cart</p>
             </div>
             <div className="compare">
               <p>Compare</p>

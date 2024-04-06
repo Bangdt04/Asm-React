@@ -47,7 +47,7 @@ const New: React.FC = () => {
               ) : products.length > 0 ? (
                 products.map((product: Product) => (
                   <div key={product._id} className="product-item">
-                    <Link to={`/product/${product._id}`}>
+                    <Link to={`/products/${product._id}`}>
                       <img src={product.image} alt={product.name} />
                       <h3>{product.name}</h3>
                     </Link>

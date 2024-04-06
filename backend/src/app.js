@@ -9,12 +9,11 @@ import productRouter from "./routers/product";
 
 const app = express();
 dotenv.config();
-// middleware
+
 app.use(express.json());
 app.use(cors());
 app.use(morgan("tiny"));
 
-// connect db
 connectDB(process.env.DB_URI);
 
 app.use("/api", productRouter);

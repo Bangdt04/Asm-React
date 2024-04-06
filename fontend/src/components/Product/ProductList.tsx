@@ -33,7 +33,7 @@ const ProductList = () => {
     return (
         <div className="container my-4">
             <h2 className="mb-3">Danh sách sản phẩm</h2>
-            <Link to="/products/add" className="btn btn-success mb-3">Thêm sản phẩm</Link>
+            <Link to="/admin/add" className="btn btn-success mb-3">Thêm sản phẩm</Link>
             <div className="row">
                 {products.map(product => (
                     <div key={product._id} className="col-md-4 mb-3">
@@ -42,7 +42,7 @@ const ProductList = () => {
                             <div className="card-body">
                                 <h5 className="card-title">{product.name}</h5>
                                 <p className="card-text">{product.description}</p>
-                                <Link to={`/products/edit/${product._id}`} className="btn btn-primary mr-2">Chỉnh sửa</Link>
+                                <Link to={`/admin/edit/${product._id}`} className="btn btn-primary mr-2">Chỉnh sửa</Link>
                                 <button className="btn btn-danger" onClick={() => handleDelete(product._id)}>Xóa</button>
                             </div>
                         </div>

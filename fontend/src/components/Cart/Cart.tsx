@@ -1,18 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import queryString from 'query-string';
 import './cart.css';
 
 const Cart = () => {
+  const location = useLocation();
+  const queryParams = queryString.parse(location.search);
+
   const addToCartHandler = () => {
     window.location.href = '/checkout';
   }
-
-
-  const product = {
-    name: 'Asgaard sofa',
-    price: '25.000.000đ',
-    image: '/images/Group 146.png',
-  };
 
   return (
     <div className="container">
@@ -32,12 +29,12 @@ const Cart = () => {
             <tbody>
               <tr>
                 <td>
-                  <img src={product.image} alt={product.name} />
+                  <img src={queryParams.image} alt={queryParams.name} />
                 </td>
-                <td style={{ color: '#9F9F9F' }}>{product.name}</td>
-                <td style={{ color: '#9F9F9F' }}>{product.price}</td>
+                <td style={{ color: '#9F9F9F' }}>{queryParams.name}</td>
+                <td style={{ color: '#9F9F9F' }}>{queryParams.price}</td>
                 <td>1</td>
-                <td>{product.price}</td>
+                <td>{queryParams.price}</td>
                 <td><i className="fa-solid fa-trash" style={{ color: 'red' }}></i></td>
               </tr>
             </tbody>
@@ -48,12 +45,10 @@ const Cart = () => {
             <h2 style={{ textAlign: 'center', marginTop: '20px' }}>Cart Totals</h2>
           </div>
           <div className="subtotal">
-            <p>Subtotal</p>
-            <h2>{product.name}</h2>
+            <p>Subtotal {queryParams.price}</p>
           </div>
           <div className="total">
-            <p>Total</p>
-            <p>Price: {product.price}</p>
+            <p>Total  {queryParams.price}</p>
           </div>
           <Link to="/checkout">
             <p onClick={addToCartHandler}>Check out</p>

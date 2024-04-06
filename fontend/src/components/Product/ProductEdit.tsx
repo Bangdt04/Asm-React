@@ -36,7 +36,7 @@ const ProductEdit = () => {
       await axios.put(`http://localhost:8080/api/products/${id}`, formData);
       alert('Cập nhật sản phẩm thành công');
       // Redirect to product list after successful edit
-      navigate('/products');
+      navigate('/admin');
     } catch (error) {
       console.error('Error editing product:', error);
     }
